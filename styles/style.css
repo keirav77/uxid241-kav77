@@ -1,0 +1,22 @@
+:root{
+    --secondary-color: #fc63a3;
+    --primary-color: #900c0c;
+    --font-family: 'Helvetica Neue', sans-serif;
+}
+h1{
+    font-family: var(--font-family);
+    color: var(--primary-color);
+}
+label {
+    font-family: var(--font-family);
+}
+button {
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 800px;
+    padding: 10px 20px;
+    cursor: pointer;
+    
+}

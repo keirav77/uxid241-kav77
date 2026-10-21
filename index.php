@@ -1,10 +1,23 @@
 <?php 
 declare(strict_types=1);
 
-// AI Use, I used AI to ask a question about what strict_type to use or snake_case.
-//  Here are my prompts: I'm working in PHP and starting my index file, for declaring the strict-type what is better? Would it be 1 or 3? How are each strict-type different?What would Snake case be used for?
-//  AI ANSWER: Strict type=1 Strict typing on — PHP enforces scalar parameter and return types more strictly. Using strict_types=1 is a good choice when you're learning PHP because it makes type-related mistakes easier to catch rather than having PHP silently convert values for you. (KV- now I know that I want to use this because it will declare any errors and strict type 0 wouldn't make sense in this case. )
-// SNAKE CASE ANSWER: "In PHP projects, you'll commonly encounter snake_case for things like database columns, configuration values, array keys, and sometimes variables, depending on the project's coding style." 
+//require config so i dont have to reload it//
+require 'config.php';
+
+$host = 'localhost';
+$user = 'root';
+$pass = 'root';
+$db = 'cookbook';
+
+
+try{$conn = mysqli_connect($host, $user, $pass, $db);
+mysqli_set_charset($conn, 'utf8mb4');
+}
+catch (mysqli_sql_exception $e) {
+    http_response_code(500);
+    exit('connection failed: ' . $e->getMessage());
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,5 +42,6 @@ declare(strict_types=1);
     <input type="text" id="search_recipe" name="search_recipe">
     <button type="submit">Search Recipes</button>
 </form>
+
 </body>
 </html>

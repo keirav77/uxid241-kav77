@@ -2,16 +2,18 @@
     --secondary-color: #fc63a3;
     --primary-color: #900c0c;
     --font-family: 'Helvetica Neue', sans-serif;
+    background-color:rgb(254, 224, 252) ;
 }
 body{
     font-family: var(--font-family);
+    background-color:rgb(255, 239, 254);
  
 }
-
 
 h1{
     font-family: var(--font-family);
     color: var(--primary-color);
+    font-size: 36px;
 }
 h2{
     color: var(--primary-color)
@@ -29,7 +31,17 @@ button {
     cursor: pointer;
     
 }
-
+.recipe-button{
+display: inline-block;
+font-family:var(--font-family);
+background-color: var(--secondary-color);
+text-decoration: none;
+padding: 10px 20px;
+color:#FFFFFf;
+}
+.recipe-button:hover {
+    opacity: 0.8;
+}
 /*.recipe-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -70,11 +82,13 @@ button {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
+    background-color:#ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .recipe-card h3 {
     margin-top: 0;
+    font-size: 20px;
     color: var(--primary-color);
 }
 

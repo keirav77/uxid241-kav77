@@ -15,7 +15,7 @@ require __DIR__ . '/config.php';
 
 
 
-$sql = 'SELECT r.id, r.title, r.description, r.servings, r.prep_time, c.category_name
+$sql = 'SELECT r.id, r.title, r.description, r.servings, r.prep_time, r.image, c.category_name
         FROM recipes r
         JOIN categories c ON c.category_id = r.category_id
         ORDER BY r.title';
@@ -50,10 +50,13 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 <main>
 <h2>All Recipes</h2>
  <section class="recipe-grid">
+<!-- AI use: ChatGPT helped troubleshoot the recipe card foreach loop
+// and explained how to structure one card for each recipe.!-->
         <?php foreach ($recipes as $recipe): ?>
     <article class="recipe-card">
 
-
+<!-- AI use: ChatGPT helped troubleshoot the e() escaping function
+// so it could safely display database values. !-->
          <h3><?= e($recipe['title']) ?></h3>
 
            <p class="category">
@@ -65,9 +68,17 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
            Serves <?= e($recipe['servings']) ?> 
         </span>
         <span>
-            Prep Time: <?= ($recipe['category_name']) ?> min
+            Category: <?= ($recipe['category_name']) ?> 
         </span>
+       
+     <a class="recipe-button"
+                   href="recipe.php?id=<?= e((string)$recipe['id']) ?>">
+                    View Recipe
+                </a>
         </div>  
+       <!--Ai: How do i add the images as files:!-->
+       
+
 
               <!-- AI use: Asked ai where i was getting a parse error on line 70:
                Answer: you forgot the php end for each which is needed to close the loop.

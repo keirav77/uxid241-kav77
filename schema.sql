@@ -105,7 +105,7 @@ ALTER TABLE Recipes ADD COLUMN category_id INT NULL;
 UPDATE Recipes SET category_id = 1 WHERE ID = 1;  -- Chicken
 UPDATE Recipes SET category_id = 2 WHERE ID = 2;  -- Beef
 UPDATE Recipes SET category_id = 3 WHERE ID = 3;  -- Vegetarian
-
+ALTER TABLE Recipes MODIFY category_id INT NOT NULL;
 -- 3. Add the foreign key
 ALTER TABLE Recipes
   ADD CONSTRAINT fk_recipes_category

@@ -3,6 +3,7 @@
     --primary-color: #900c0c;
     --font-family: 'Helvetica Neue', sans-serif;
 }
+
 h1{
     font-family: var(--font-family);
     color: var(--primary-color);
@@ -19,4 +20,28 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 20px;
+}
+.recipe-card{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); ;
+}
+.card-body{
+    margin-top: 0;
+}
+.recipe-card .category{
+    font-weight: bold;
+}
+.recipe-details{
+    display: flex;
+    justify-content: space-between;
+
 }

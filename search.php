@@ -1,54 +1,71 @@
 <?php
 declare(strict_types=1);
 
-require_once 'database.php';
+require_once 'config.php';
 
-    function e(string $value): string { 
-        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); 
-    }
+   // function e(string $value): string { 
+      //  return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); 
+   // }
 
 
 $search_recipe = $_GET['search_recipe'] ?? '';
-$search_recipe = trim($search_recipe);
+$search_recipe = is_string($search_recipe) ? trim($search_recipe): '';    
+$recipes = [];
 
 
-if (!is_string($search_recipe)) {
-  $search_recipe = '';
-}
+if ($search_recipe !== '') {
+
+$sql = "SELECT Recipes.*, Categories.category_name
+FROM Recipes
+LEFT JOIN Categories
+  ON Recipes.category_id = Categories.category_id
+  WHERE Recipes.title LIKE ? 
+  OR Recipes.description LIKE ?";
+   
+  $stmt = mysqli_prepare($conn, $sql);
+
+  $search_term = '%' . $search_recipe . '%';
+
+mysqli_stmt_bind_param(
+        $stmt,
+        "ss",
+        $search_term,
+        $search_term
+    );
+  
+  mysqli_stmt_execute($stmt);
+
     
-else {
-    $search_recipe = htmlspecialchars($search_recipe, ENT_QUOTES, 'UTF-8');
-    echo "You searched for: " . $search_recipe;
-}
-
-
-
-$sql = 'SELECT * FROM recipes';
-$result = mysqli_query($conn, $sql);
+$result = mysqli_stmt_get_result($stmt);
 $recipes = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-//
-// Prepared statement
-// Asked Chatgpt: Why are all my recipe results showing up? Here is my Prepared Statement. ($sql = 'SELECT * FROM recipes';
-//$result = mysqli_query($conn, $sql); $recipes = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-//AI Answer: You have an all list query use. 
-
-
+ 
+mysqli_free_result($result);
+    mysqli_stmt_close($stmt);
+}
 ?>
-<h2> Search Results </h2>
-<?php foreach ($recipes as $recipe): ?>
-  <h2>
-    <?= htmlspecialchars($recipe['title'], ENT_QUOTES, 'UTF-8') ?>
-  </h2>
+<!--Prepared statement
+ //Asked Chatgpt: Why are all my recipe results showing up? Here is my Prepared Statement. ($sql = 'SELECT * FROM recipes';
+//$result = mysqli_query($conn, $sql); $recipes = mysqli_fetch_all($result, MYSQLI_ASSOC); 
+//AI Answer: You have an all list query use. ---
+!-->
 
-  <p>
-    <?= htmlspecialchars($recipe['description'], ENT_QUOTES, 'UTF-8') ?>
-  </p>
-  <p>
-    <?= htmlspecialchars($recipe['prep_time'], ENT_QUOTES, 'UTF-8') ?>
-</p>
-<p>
+<h2> Search Results </h2>
+
+<?php if ($search_recipe !== ''): ?>
+  <p> you searched for: <?= e($search_recipe)?> </p>
+<?php endif; ?>
+
+<?php if (empty($recipes)): ?>
+<p>No recipes found.</p>
+<?php endif; ?>
+  
+  <?php foreach ($recipes as $recipe): ?>
+
+  <h2><?= e($recipe['title']) ?> </h2>
+  <p><?= e($recipe['description']) ?> </p>
+ <li>Serves: <?= e($recipe['servings']) ?></li>
 <li>Category: <?= e($recipe['category_name']) ?></li>
+<li>Prep time: <?= e($recipe['prep_time']) ?></li>
 <?php endforeach; ?>
 
 

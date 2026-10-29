@@ -6,11 +6,10 @@ require 'config.php';
 
 try {
     $conn = mysqli_connect($host, $user, $pass, $db);
-    mysqli_set_charset($conn, 'utf8mb4');
-}
+   
+    mysqli_set_charset($conn, 'utf8mb4');}
+     
+    catch (mysqli_sql_exception $e) {
+  exit('Database connection failed.');
 
-catch (mysqli_sql_exception $e) {
-    error_log($e->getMessage());
-    http_response_code(500);
-    exit('Sorry, the database is unavailable right now.');
 }

@@ -3,10 +3,17 @@
     --primary-color: #900c0c;
     --font-family: 'Helvetica Neue', sans-serif;
 }
+body{
+    font-family: var(--font-family);
+}
+
 
 h1{
     font-family: var(--font-family);
     color: var(--primary-color);
+}
+h2{
+    color: var(--primary-color)
 }
 label {
     font-family: var(--font-family);
@@ -25,14 +32,21 @@ button {
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 30px;
     padding: 20px;
+    width: 100%;
 }
 .recipe-card{
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+/*Ai use: my cards won't show up so it said to try making this the recipe card section*/
+.recipe-card h3 {
+    margin-top: 0;
+    font-family: var(--font-family);
+    color: var(--primary-color);
 }
 .card-body{
     margin-top: 0;

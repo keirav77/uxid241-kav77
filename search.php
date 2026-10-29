@@ -48,6 +48,15 @@ mysqli_free_result($result);
 //$result = mysqli_query($conn, $sql); $recipes = mysqli_fetch_all($result, MYSQLI_ASSOC); 
 //AI Answer: You have an all list query use. ---
 !-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXID-241-kav77 Cookbook</title>
+    <link rel= "stylesheet" href="styles/style.css"> 
+</head>
+<body>
 
 <h2> Search Results </h2>
 

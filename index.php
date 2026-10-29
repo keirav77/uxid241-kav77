@@ -34,9 +34,8 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
     <link rel= "stylesheet" href="styles/style.css"> 
 </head>
 <body>
-    <h1>
-        <?php echo "Keira Vaughan's Cookbook"; ?>
-</h1>
+    <header>
+    <h1> Keira Vaughan's Cookbook</h1>
 
 <!-- Asked Ai why it was saying hello world twice, i pasted in my echo statement in the beginning of the php, and then i also put in the one in my html. 
  The answer I got was that both work but I will be able to have more control over the output, and other adjustments if I use the echo statement in the html. 
@@ -46,8 +45,12 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
     <label for="search_recipe">Search for a Recipe here:</label>
 
     <input type="text" id="search_recipe" name="search_recipe">
+
     <button type="submit">Search Recipes</button>
 </form>
+</header>
+
+<main>
 <h2>All Recipes</h2>
  <section class="recipe-grid">
         <?php foreach ($recipes as $recipe): ?>
@@ -56,20 +59,14 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
        <div class="card-body"> 
 
          <h3><?= e($recipe['title']) ?></h3>
-           <li>Category: <?= e($recipe['category_name']) ?></li>
-            <p><?= e($recipe['description']) ?></p>
-            <p>Serves <?= e($recipe['servings']) ?> · <?= e($recipe['prep_time']) ?> min</p>
+           <p class="category">
+            Category: <?= e($recipe['category_name']) ?></p>
+           <p class= "description"><?= e($recipe['description']) ?></p>
+           
+           <div class="recipe-details">
+           <p>Serves <?= e($recipe['servings']) ?> · <?= e($recipe['prep_time']) ?> min</p>
             <p>Prep Time: <?= ($recipe['category_name']) ?></p>
-                
-        
-        <?php endforeach; ?>
-
-       
-            <?php foreach ($recipes as $r): ?>
-       
-
-            
-          <?php endforeach; ?>
+        </div>  
 
               <!-- AI use: Asked ai where i was getting a parse error on line 70:
                Answer: you forgot the php end for each which is needed to close the loop.
@@ -77,7 +74,8 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
                the one above that doesn't print as cards. -->
                 </div>  
             </article>
-              
-                    </section>
-            </body>
+              <?php endforeach; ?>
+            </section>
+        </main>
+        </body>
 </html>

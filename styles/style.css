@@ -5,6 +5,7 @@
 }
 body{
     font-family: var(--font-family);
+ 
 }
 
 
@@ -29,7 +30,7 @@ button {
     
 }
 
-.recipe-grid {
+/*.recipe-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
@@ -43,7 +44,7 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
 }
 /*Ai use: my cards won't show up so it said to try making this the recipe card section*/
-.recipe-card h3 {
+/*.recipe-card h3 {
     margin-top: 0;
     font-family: var(--font-family);
     color: var(--primary-color);
@@ -58,4 +59,31 @@ button {
     display: flex;
     justify-content: space-between;
 
+}*/
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
+
+.recipe-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.recipe-card , .category {
+    font-weight: bold;
+}
+
+.recipe-details {
+    display: flex;
+    justify-content: space-between;
+}
+    

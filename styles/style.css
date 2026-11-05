@@ -42,36 +42,7 @@ color:#FFFFFf;
 .recipe-button:hover {
     opacity: 0.8;
 }
-/*.recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 20px;
-    width: 100%;
-}
-.recipe-card{
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
-}
-/*Ai use: my cards won't show up so it said to try making this the recipe card section*/
-/*.recipe-card h3 {
-    margin-top: 0;
-    font-family: var(--font-family);
-    color: var(--primary-color);
-}
-.card-body{
-    margin-top: 0;
-}
-.recipe-card .category{
-    font-weight: bold;
-}
-.recipe-details{
-    display: flex;
-    justify-content: space-between;
 
-}*/
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -100,4 +71,60 @@ color:#FFFFFf;
     display: flex;
     justify-content: space-between;
 }
-    
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+
+}
+.site-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #342c25;
+    text-decoration: none;
+}
+
+.site-header nav a {
+    color: #665342;
+    font-weight: 600;
+    text-decoration: none;
+}
+.site-header nav a:hover {
+    text-decoration: underline;
+}
+
+
+.login-card {
+    padding: 1.5rem;
+    background-color: #fffefa;
+    border: 1px solid #e4ddd1;
+    border-radius: 10px;
+}
+
+.login-card h2 {
+    margin-top: 0;
+}
+
+.login-card p {
+    color: #766b60;
+    line-height: 1.5;
+}
+
+.account-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.account-nav a {
+    display: block;
+    padding: 0.85rem;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #594735;
+    border-radius: 6px;
+    font-weight: 600;
+}

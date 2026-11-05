@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 29, 2026 at 08:15 PM
+-- Generation Time: Nov 05, 2026 at 07:40 PM
 -- Server version: 8.0.44
 -- PHP Version: 8.3.30
 
@@ -20,11 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `cookbook`
 --
-CREATE DATABASE IF NOT EXISTS `cookbook`
-    DEFAULT CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
 
-USE `cookbook`;
 -- --------------------------------------------------------
 
 --
@@ -60,17 +56,35 @@ CREATE TABLE `recipes` (
   `servings` int NOT NULL,
   `created_at` timestamp NOT NULL,
   `prep_time` int DEFAULT NULL,
-  `category_id` int NOT NULL
+  `ingredients` int NOT NULL,
+  `subtitle` int NOT NULL,
+  `category_id` int NOT NULL,
+  `image` varchar(266) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `recipes`
 --
 
-INSERT INTO `recipes` (`id`, `title`, `description`, `servings`, `created_at`, `prep_time`, `category_id`) VALUES
-(1, 'Ancho-Orange Chicken', 'Were amping up chicken breasts with a glaze of smoky ancho chile paste and fresh orange juice in this recipe. On the side, roasted carrots and lightly creamy, golden raisin-studded rice perfectly accent the sweetness of the glaze.', 4, '2026-10-21 15:39:07', 30, 1),
-(2, 'Beef Medallions Mushroom Sauce', 'In this easy recipe, inspired by steak Diane an American restaurant classic, were searing beef medallions, then using the fond in the pan to make a rich, bright mushroom sauce for spooning on top. Garlic mashed potatoes and sautéed kale make for delicious, simple sides.', 2, '2026-10-21 15:39:20', 35, 2),
-(3, 'Broccoli & Basil Pesto Sandwiches', 'These Italian focaccia sandwiches are layered with broccoli, three cheeses, and a savory basil, cashew, and pine nut pesto, then baked in the oven to meld all the bright, aromatic flavors. On the side, were serving a refreshing salad of romaine and seasonal clementine, dressed in a creamy dressing made with fresh clementine juice.', 4, '2026-10-21 15:39:33', 25, 3);
+INSERT INTO `recipes` (`id`, `title`, `description`, `servings`, `created_at`, `prep_time`, `ingredients`, `subtitle`, `category_id`, `image`) VALUES
+(1, 'Ancho-Orange Chicken', 'Were amping up chicken breasts with a glaze of smoky ancho chile paste and fresh orange juice in this recipe. On the side, roasted carrots and lightly creamy, golden raisin-studded rice perfectly accent the sweetness of the glaze.', 4, '2026-10-29 20:52:37', 30, 0, 0, 1, 'uploads/images/ancho-orange-chicken/dish.jpg'),
+(2, 'Beef Medallions Mushroom Sauce', 'In this easy recipe, inspired by steak Diane an American restaurant classic, were searing beef medallions, then using the fond in the pan to make a rich, bright mushroom sauce for spooning on top. Garlic mashed potatoes and sautéed kale make for delicious, simple sides.', 2, '2026-10-21 15:39:20', 35, 0, 0, 2, ''),
+(3, 'Broccoli & Basil Pesto Sandwiches', 'These Italian focaccia sandwiches are layered with broccoli, three cheeses, and a savory basil, cashew, and pine nut pesto, then baked in the oven to meld all the bright, aromatic flavors. On the side, were serving a refreshing salad of romaine and seasonal clementine, dressed in a creamy dressing made with fresh clementine juice.', 4, '2026-10-21 15:39:33', 25, 0, 0, 3, ''),
+(4, 'Broccoli & Mozzarella Calzones', 'These calzones are loaded with melty fresh mozzarella, creamy ricotta, and tender broccoli—balanced by a tangy tomato dipping sauce. For a refreshing side, we\re tossing crunchy romaine and briny black olives in our take on Caesar dressing.', 4, '2026-10-29 20:23:09', NULL, 0, 0, 3, ''),
+(5, 'Bucatini Alfredo', 'This quick-cooking recipe captures all the deliciously creamy, rich flavor of the classic Italian-American sauce—with the welcome addition of quick-braised broccoli. A dusting of pecorino cheese completes each bowl with a touch of sharpness.', 2, '2026-10-29 20:30:23', NULL, 0, 0, 3, ''),
+(7, 'Bucatini & Tomato Sauce', 'Made with petite datterini tomatoes, the sauce for tonight\s bucatini highlights briny olives and capers, hot red pepper flakes, and savory Grana Padano cheese. We\re mixing in roasted broccoli for contrasting texture and nutty-sweet flavor.', 2, '2026-10-29 20:30:23', NULL, 0, 0, 3, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_hash` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -90,6 +104,13 @@ ALTER TABLE `recipes`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -103,7 +124,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

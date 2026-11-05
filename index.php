@@ -6,7 +6,6 @@ declare(strict_types=1);
 require __DIR__ . '/config.php';
 
 
-
 //Asked Ai how why Im getting this error: Fatal error: Uncaught Error: Call to undefined function escape_html() in /Applications/MAMP/htdocs/uxid241-kav77/index.php:53 Stack trace: #0 {main} thrown in /Applications/MAMP/htdocs/uxid241-kav77/index.php on line 53
 
 
@@ -45,9 +44,28 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 
     <button type="submit">Search Recipes</button>
 </form>
+<aside class="login-card">
+    <p>Sign in or create an account to access your cookbook.</p>
+
+    <nav class="account-nav">
+        <a href="login.php">Log In</a>
+        <a href="register.php">Register</a>
+    </nav>
+</aside>
 </header>
 
 <main>
+    <main class="page-layout">
+
+    <section class="recipe-content">
+        <!-- All your recipe cards go here -->
+    </section>
+
+    <aside class="login-card">
+        <!-- Your login form goes here -->
+    </aside>
+
+</main>
 <h2>All Recipes</h2>
  <section class="recipe-grid">
 <!-- AI use: ChatGPT helped troubleshoot the recipe card foreach loop
@@ -87,6 +105,6 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
             </article>
               <?php endforeach; ?>
             </section>
-        </main>
+      
         </body>
 </html>

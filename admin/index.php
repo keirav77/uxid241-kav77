@@ -29,6 +29,7 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 </head>
 <body>
 <header>
+      <h1> Keira Vaughan's Cookbook</h1>
 <form action="search.php" method="GET">
     <label for="search_recipe">Search for a Recipe here:</label>
 

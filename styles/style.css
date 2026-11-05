@@ -18,8 +18,15 @@ h1{
 h2{
     color: var(--primary-color)
 }
+h3{
+    font-weight: 500;
+}
 label {
     font-family: var(--font-family);
+}
+p{
+    font-weight: 400;
+    line-height: 1.6;
 }
 button {
     font-family: var(--font-family);
@@ -30,6 +37,18 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     
+}
+ul li{
+    list-style: decimal;
+}
+ol{
+    line-height: 1.8;
+    font-weight:400;
+    display:block;
+  
+}
+.recipe-steps{
+    list-style: decimal;
 }
 .recipe-button{
 display: inline-block;
@@ -81,12 +100,12 @@ color:#FFFFFf;
 .site-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #342c25;
+    color: #900c0c;
     text-decoration: none;
 }
 
 .site-header nav a {
-    color: #665342;
+    color: #900c0c;
     font-weight: 600;
     text-decoration: none;
 }
@@ -96,8 +115,8 @@ color:#FFFFFf;
 
 
 .login-card {
-    padding: 1.5rem;
-    background-color: #fffefa;
+    padding: 1.4rem;
+    background-color: #ffffff;
     border: 1px solid #e4ddd1;
     border-radius: 10px;
 }
@@ -107,7 +126,7 @@ color:#FFFFFf;
 }
 
 .login-card p {
-    color: #766b60;
+    color: #1a0219;
     line-height: 1.5;
 }
 
@@ -124,7 +143,7 @@ color:#FFFFFf;
     text-align: center;
     text-decoration: none;
     color: white;
-    background-color: #594735;
-    border-radius: 6px;
+    background-color: #900c0c;
+    border-radius: 15px;
     font-weight: 600;
 }

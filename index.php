@@ -16,10 +16,10 @@ require __DIR__ . '/config.php';
 
 $sql = 'SELECT r.id, r.title, r.description, r.servings, r.prep_time, r.image, c.category_name
         FROM recipes r
-        JOIN categories c ON c.category_id = r.category_id
+         JOIN categories c ON c.category_id = r.category_id
         ORDER BY r.title';
 $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
-
+echo count($recipes);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,6 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 <body>
     <header>
     <h1> Keira Vaughan's Cookbook</h1>
-
 <!-- Asked Ai why it was saying hello world twice, i pasted in my echo statement in the beginning of the php, and then i also put in the one in my html. 
  The answer I got was that both work but I will be able to have more control over the output, and other adjustments if I use the echo statement in the html. 
  So I decided to remove the echo "hello world!" after declaring the strict types. -->
@@ -61,13 +60,12 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
         <!-- All your recipe cards go here -->
     </section>
 
-    <aside class="login-card">
-        <!-- Your login form goes here -->
-    </aside>
+
 
 </main>
 <h2>All Recipes</h2>
  <section class="recipe-grid">
+    
 <!-- AI use: ChatGPT helped troubleshoot the recipe card foreach loop
 // and explained how to structure one card for each recipe.!-->
         <?php foreach ($recipes as $recipe): ?>
@@ -106,5 +104,4 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
               <?php endforeach; ?>
             </section>
       
-        </body>
-</html>
+        </

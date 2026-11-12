@@ -39,7 +39,8 @@ PHP sessions protect the admin area.
 
 Anonymous visitors are redirected to the login page when attempting to access protected admin pages.
 
-# Admin account: [Document whether you use a seeded admin account or a registration system. Include the login email and explain how the password is provided without publishing the password.]
+# Admin account: You can register an account and then be able to log in, if you use a seeded admin account or a registration system.
+# You can register by filling in your email and creating a password that WILL NOT be saved.
 
 Recipe Search
 

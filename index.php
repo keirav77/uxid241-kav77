@@ -97,14 +97,8 @@ echo count($recipes);
             </div>  
         </div>
 
-       <!--Ai: How do i add the images as files:!-->
        
-
-
-              <!-- AI use: Asked ai where i was getting a parse error on line 70:
-               Answer: you forgot the php end for each which is needed to close the loop.
-               Other things that ai noticed: By doing the same php to list out the actual cards you are duplicating your php, consider deleting 
-               the one above that doesn't print as cards. -->  
+       
             </article>
               <?php endforeach; ?>
             </section>

@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 require_once 'config.php';
 
-   // function e(string $value): string { 
-      //  return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); 
-   // }
 
 
 $search_recipe = $_GET['search_recipe'] ?? '';
@@ -15,12 +12,12 @@ $recipes = [];
 
 if ($search_recipe !== '') {
 
-$sql = "SELECT Recipes.*, Categories.category_name
-FROM Recipes
-LEFT JOIN Categories
-  ON Recipes.category_id = Categories.category_id
-  WHERE Recipes.title LIKE ? 
-  OR Recipes.description LIKE ?";
+$sql = "SELECT recipes.*, categories.category_name
+FROM recipes
+LEFT JOIN categories
+  ON recipes.category_id = categories.category_id
+  WHERE recipes.title LIKE ? 
+  OR recipes.description LIKE ?";
    
   $stmt = mysqli_prepare($conn, $sql);
 

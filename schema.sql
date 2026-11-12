@@ -68,7 +68,7 @@ CREATE TABLE `recipes` (
 
 INSERT INTO `recipes` (`id`, `title`, `description`, `servings`, `created_at`, `prep_time`, `ingredients`, `subtitle`, `category_id`, `image`) VALUES
 (1, 'Ancho-Orange Chicken', 'Were amping up chicken breasts with a glaze of smoky ancho chile paste and fresh orange juice in this recipe. On the side, roasted carrots and lightly creamy, golden raisin-studded rice perfectly accent the sweetness of the glaze.', 4, '2026-10-29 20:52:37', 30, 0, 0, 1, 'uploads/images/ancho-orange-chicken/dish.jpg'),
-(2, 'Beef Medallions Mushroom Sauce', 'In this easy recipe, inspired by steak Diane an American restaurant classic, were searing beef medallions, then using the fond in the pan to make a rich, bright mushroom sauce for spooning on top. Garlic mashed potatoes and sautéed kale make for delicious, simple sides.', 2, '2026-10-21 15:39:20', 35, 0, 0, 2, ''),
+(2, 'Beef Medallions Mushroom Sauce', 'In this easy recipe, inspired by steak Diane an American restaurant classic, were searing beef medallions, then using the fond in the pan to make a rich, bright mushroom sauce for spooning on top. Garlic mashed potatoes and sautéed kale make for delicious, simple sides.', 2, '2026-10-21 15:39:20', 35, 0, 0, 2, 'uploads/images/0101_2PM_Steak-Diane_97315_SQ_hi_res.jpg'),
 (3, 'Broccoli & Basil Pesto Sandwiches', 'These Italian focaccia sandwiches are layered with broccoli, three cheeses, and a savory basil, cashew, and pine nut pesto, then baked in the oven to meld all the bright, aromatic flavors. On the side, were serving a refreshing salad of romaine and seasonal clementine, dressed in a creamy dressing made with fresh clementine juice.', 4, '2026-10-21 15:39:33', 25, 0, 0, 3, ''),
 (4, 'Broccoli & Mozzarella Calzones', 'These calzones are loaded with melty fresh mozzarella, creamy ricotta, and tender broccoli—balanced by a tangy tomato dipping sauce. For a refreshing side, we\re tossing crunchy romaine and briny black olives in our take on Caesar dressing.', 4, '2026-10-29 20:23:09', NULL, 0, 0, 3, ''),
 (5, 'Bucatini Alfredo', 'This quick-cooking recipe captures all the deliciously creamy, rich flavor of the classic Italian-American sauce—with the welcome addition of quick-braised broccoli. A dusting of pecorino cheese completes each bowl with a touch of sharpness.', 2, '2026-10-29 20:30:23', NULL, 0, 0, 3, ''),
@@ -104,6 +104,13 @@ ALTER TABLE `recipes`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `recipe_steps`
+--
+ALTER TABLE `recipe_steps`
+  ADD PRIMARY KEY (`step_id`),
+  ADD KEY `recipe_id` (`recipe_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -127,10 +134,16 @@ ALTER TABLE `recipes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `recipe_steps`
+--
+ALTER TABLE `recipe_steps`
+  MODIFY `step_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -141,6 +154,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `recipes`
   ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `recipe_steps`
+--
+ALTER TABLE `recipe_steps`
+  ADD CONSTRAINT `recipe_steps_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

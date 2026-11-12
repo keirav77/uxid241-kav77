@@ -14,7 +14,7 @@ require __DIR__ . '/config.php';
 
 
 
-$sql = 'SELECT r.id, r.title, r.description, r.servings, r.prep_time, r.image, c.category_name
+$sql = 'SELECT r.id, r.title, r.description, r.servings,r.subtitle, r.prep_time, r.image, c.category_name
         FROM recipes r
          JOIN categories c ON c.category_id = r.category_id
         ORDER BY r.title';
@@ -83,7 +83,8 @@ echo count($recipes);
 
    <p class="category">
     <?= e($recipe['category_name']) ?></p> 
- <h3><?= e($recipe['title']) ?> </h3>       
+ <h3><?= e($recipe['title']) ?> </h3>   
+ <p class="subtitle"><?= e($recipe['subtitle']) ?></p>    
     <p class= "description"><?= e($recipe['description']) ?></p>
            
      <div class="recipe-details">

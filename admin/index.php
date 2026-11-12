@@ -227,9 +227,11 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 <!-- Recipe info to put smaller information in it !-->
  <div class="recipe-info"> 
     <!--Edit Recipe!-->
-<a href="edit.php?id=<?= e((string)$recipe['id']) ?>">
-    Edit Recipe
+    <div class="recipe-actions">
+<a class="edit-button" href="edit.php?id=<?= e((string)$recipe['id']) ?>">
+   <img src="../uploads/images/pen.svg" alt="Pencil icon">
 </a>
+</div>
    <p class="category">
     <?= e($recipe['category_name']) ?></p> 
  <h3><?= e($recipe['title']) ?> </h3>       
@@ -269,6 +271,9 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 
     <a href="logout.php">Log Out</a>
 </main>
-
+<footer>
+    <h2>Credits</h2>
+    <h3>Attributions</h3>
+    <p>Pencil Icon: Pen by novani from <a href="https://thenounproject.com/browse/icons/term/pen/" target="_blank" title="Pen Icons">Noun Project</a> (CC BY 3.0) </p>
 </body>
 </html>

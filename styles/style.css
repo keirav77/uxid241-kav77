@@ -1,6 +1,6 @@
 :root{
     --secondary-color:#579284 ;
-    --primary-color: #D96B43;
+    --primary-color: #d96b43;
     --font-family: 'Helvetica Neue', sans-serif;
     --back-color:#e4d0c0 ;
     --card-color: #f5efe7;
@@ -17,10 +17,16 @@ h1{
     font-size: 36px;
 }
 h2{
-    color: var(--primary-color)
+    color: var(--primary-color);
+    display: block;
+    font-size: 1.5rem;
+    margin-top:20px;
+
+    padding: 0;
 }
 h3{
     font-weight: 500;
+    font-size: 1rem;
 }
 label {
     font-family: var(--font-family);
@@ -28,6 +34,7 @@ label {
 p{
     font-weight: 400;
     line-height: 1.6;
+    color:var(--secondary-color)
 }
 button {
     font-family: var(--font-family);
@@ -38,6 +45,14 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     
+}
+footer{
+    box-shadow: inset;
+    border:1px;
+    border-color:#e4ddd1;
+    background-color:#e4ddd1;
+    color:var(--secondary-color);
+    margin: top 20px;
 }
 ul li{
     list-style: decimal;
@@ -103,14 +118,32 @@ img {
   object-fit: cover;
   aspect-ratio: 4 / 3;
 }
-
+.subtitle {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
 .recipe-info{
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 18px 20px 20px;
 }
-
+.edit-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    size: 25px;
+    font-weight:600;
+    
+}
+.edit-button img {
+    width: 32px;
+    height: 32px;
+    display: block;
+    font-weight: bold
+}
 
 .recipe-info h3 {
     margin: 0 0 8px;

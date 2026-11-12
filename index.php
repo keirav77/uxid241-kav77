@@ -91,7 +91,7 @@ echo count($recipes);
            Serves <?= e($recipe['servings']) ?> 
         </span>
      <a class="recipe-button"
-                   href="../recipe.php?id=<?= e((string)$recipe['id']) ?>">
+                   href="recipe.php?id=<?= e((string)$recipe['id']) ?>">
                     View Recipe
                 </a>
             </div>  

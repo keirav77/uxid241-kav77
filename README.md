@@ -54,11 +54,10 @@ Visitors can search for recipes by title using a search form. The search feature
 
 Prepared statement(46)
  //Asked Chatgpt: Why are all my recipe results showing up? Here is my Prepared Statement. $sql = 'SELECT * FROM recipes';
-//$result = mysqli_query($conn, $sql); $recipes = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-//AI Answer: You have an all list query use. ---
+//$result = mysqli_query($conn, $sql); $recipes = mysqli_fetch_all($result, MYSQLI_ASSOC)
+//AI Answer: You have an all list query use. 
 
- Ai use(Config line 22):  I kept getting an error that said my user and pass was a fatal error. I pasted in the error to 
- ChatGpt and asked what it meant they said: That error means your PHP code is reaching MySQL, but MySQL is rejecting the username/password in your config file.
+ Ai use(Config line 22):  I kept getting an error that said my user and pass was a fatal error. I pasted in the error to ChatGpt and asked what it meant they said: That error means your PHP code is reaching MySQL, but MySQL is rejecting the username/password in your config file.
  Do you still have a placeholder as a user-name?" So i changed it to root and it worked.-->
 
   AI use(Index line: 82): Asked ai where i was getting a parse error on line 70:
@@ -67,19 +66,19 @@ Prepared statement(46)
                the one above that doesn't print as cards
 
      AI use INDEX line50 : ChatGPT helped troubleshoot the e() escaping function
-// so it could safely display database values    
+// so it could safely display database values.
 
 AI use(lines: 55/56):  AI use: ChatGPT helped troubleshoot the recipe card foreach loop
 and explained how to structure one card for each recipe.!
 Next line down from that: AI use: ChatGPT helped troubleshoot the e() escaping function
-// so it could safely display database values. 
+ so it could safely display database values.
  
  Index-Admin:79-89: Asked AI why my insert wasn't working. It said the query had no values list and the
    table name was wrong (recipes, not cookbook). I also learned $e->getMessage() needs error_log()
    to actually save the error.
 
-   INdex-Admin: 125-17: AI use: Asked AI to explain how to show error messages. The if checks whether $error or
-   $deleteError has text (an empty string counts as false), and only then prints the message in a p class="error">. e() escapes the message with htmlspecialchars before it is displayed.
+   Index-Admin: 125-17: AI use: Asked AI to explain how to show error messages. The if checks whether $error or
+   $deleteError has text (an empty string counts as false), and only then prints the message in a p class="error". e() escapes the message with htmlspecialchars before it is displayed.
 
    Index: Servings and Prep time added because Ai mentioned I forgot it which was causing a bug since it was being called but wasn't on the form.
 
@@ -90,8 +89,8 @@ Search.php: Asked Ai to help debug: Why are all my recipe results showing up? He
 //AI Answer: You have an all list query use.
 
 Register.php ai use:  //AI use: $email = trim($_POST 'email' ?? ''); I used ai to figure out why I was getting an error from
-        //$email = post_value('email'); and it was because my php didn't recognize post_value, changed POST_VALUE to $POSTit to
+        $email = post_value('email'); and it was because my php didn't recognize post_value, changed POST_VALUE to $POSTit to
 
-        Config: <!-- Ai use: I kept getting an error that said my user and pass was a fatal error. I pasted in the error to 
+        Config: Ai use: I kept getting an error that said my user and pass was a fatal error. I pasted in the error to 
  ChatGpt and asked what it meant they said: That error means your PHP code is reaching MySQL, but MySQL is rejecting the username/password in your config file.
  Do you still have a placeholder as a user-name?" So i changed it to root and it worked.-->

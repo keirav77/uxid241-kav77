@@ -73,25 +73,30 @@ echo count($recipes);
 
 <!-- AI use: ChatGPT helped troubleshoot the e() escaping function
 // so it could safely display database values. !-->
-         <h3><?= e($recipe['title']) ?></h3>
+<?php if (!empty($recipe['image'])): ?>
+        <img class="recipe-image"
+     src="./<?=e($recipe['image']) ?>"
+     alt="<?= e($recipe['title']) ?>">
 
-           <p class="category">
-            Category: <?= e($recipe['category_name']) ?></p>
-           <p class= "description"><?= e($recipe['description']) ?></p>
+<?php endif; ?>
+         <div class="recipe-info"> 
+
+   <p class="category">
+    <?= e($recipe['category_name']) ?></p> 
+ <h3><?= e($recipe['title']) ?> </h3>       
+    <p class= "description"><?= e($recipe['description']) ?></p>
            
-           <div class="recipe-details">
-            <span>
+     <div class="recipe-details">
+        <span>
            Serves <?= e($recipe['servings']) ?> 
         </span>
-        <span>
-            Category: <?= ($recipe['category_name']) ?> 
-        </span>
-       
      <a class="recipe-button"
-                   href="recipe.php?id=<?= e((string)$recipe['id']) ?>">
+                   href="../recipe.php?id=<?= e((string)$recipe['id']) ?>">
                     View Recipe
                 </a>
-        </div>  
+            </div>  
+        </div>
+
        <!--Ai: How do i add the images as files:!-->
        
 

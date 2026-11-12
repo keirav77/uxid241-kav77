@@ -15,9 +15,10 @@ $sql = 'SELECT
             r.description,
             r.servings,
             r.prep_time,
+            r.image,
             c.category_name
         FROM recipes r
-        JOIN categories c 
+        LEFT JOIN categories c
             ON c.category_id = r.category_id
         WHERE r.id = ?';
 
@@ -34,7 +35,8 @@ $recipe = mysqli_fetch_assoc($result);
 if (!$recipe) {
     exit('Recipe not found.');
 }
-$steps_sql = 'SELECT step_number, instruction
+$steps_sql = 'SELECT step_number,instruction, image
+
               FROM recipe_steps
               WHERE recipe_id = ?
               ORDER BY step_number';
@@ -69,7 +71,14 @@ $steps = mysqli_fetch_all($steps_result, MYSQLI_ASSOC);
         <a href="index.php">← Back to all recipes</a>
 
         <h1><?= e($recipe['title']) ?></h1>
-
+  
+        <!-- INDIVIDUAL RECIPE MAIN IMAGE -->
+        <?php if (!empty($recipe['image'])) : ?>
+        <img
+            src="<?= e($recipe['image']); ?>"
+            alt="<?= e($recipe['title']); ?>">
+        <?php endif; ?>
+       
         <p>
             Category: <?= e($recipe['category_name']) ?>
 </p>
@@ -79,19 +88,25 @@ $steps = mysqli_fetch_all($steps_result, MYSQLI_ASSOC);
 </h3>
 
         <p>
-            Serves <?= e($recipe['servings']) ?>
+            Serves <?= e((string)$recipe['servings']) ?>
         </p>
 
         <p>
             Prep Time: <?= e($recipe['prep_time']) ?> min
         </p>
+        <!--Used ol because i wanted it to be an ordered list and not a bulleted list like ul!--> 
         <ol class="recipe-steps">
     <?php foreach ($steps as $step): ?>
         <li>
             <?= e($step['instruction']) ?>
+            <?php if (!empty($step['image'])): ?>
+                <img class="step-image"
+                     src="<?= e($step['image']) ?>"
+                     alt="Step <?= e((string)$step['step_number']) ?>">
+                      <?php endif; ?>
         </li>
     <?php endforeach; ?>
-    </0l>
+    </ol>
   
 
     </main>

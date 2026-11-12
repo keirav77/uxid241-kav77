@@ -45,6 +45,8 @@ else{
     <header class="site-header">
         <a href="index.php" class="site-logo"> Cookbook  </a>
         <nav>
+</header>
+<nav class="home">
         <a href="index.php">Home</a>
     </nav>
 </header>

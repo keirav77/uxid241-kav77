@@ -1,12 +1,13 @@
 :root{
-    --secondary-color: #fc63a3;
-    --primary-color: #900c0c;
+    --secondary-color:#579284 ;
+    --primary-color: #D96B43;
     --font-family: 'Helvetica Neue', sans-serif;
-    background-color:rgb(254, 224, 252) ;
+    --back-color:#e4d0c0 ;
+    --card-color: #f5efe7;
 }
 body{
     font-family: var(--font-family);
-    background-color:rgb(255, 239, 254);
+    background-color: var(--back-color)
  
 }
 
@@ -47,6 +48,14 @@ ol{
     display:block;
   
 }
+.home{
+display: flex;
+position:sticky;
+justify-content: flex-end;
+align-items: flex-start ;
+padding: 10px;
+font-weight: 400;
+}
 .recipe-steps{
     list-style: decimal;
 }
@@ -69,27 +78,81 @@ color:#FFFFFf;
 }
 
 .recipe-card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border: 1px solid ;
+    border-radius: 14px;
+    flex-direction:column;
+    overflow: hidden;
     padding: 20px;
-    background-color:#ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color:var(--card-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+.recipe-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+img {
+  max-width: 50%;
+  max-height: 50%;
+  display:inline-block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
 }
 
-.recipe-card h3 {
-    margin-top: 0;
+.recipe-info{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px 20px 20px;
+}
+
+
+.recipe-info h3 {
+    margin: 0 0 8px;
     font-size: 20px;
     color: var(--primary-color);
 }
 
-.recipe-card , .category {
+.recipe-info .category {
     font-weight: bold;
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+}
+.recipe-info .description {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: #555555;
+    /* AI use: Asked AI how to keep recipe cards an even height. It suggested -webkit-line-clamp to cut long descriptions off after 3 lines with "...". */
+    display:-webkit-box-;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .recipe-details {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    font-size: 14px;
 }
+
+.recipe-button {
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+@media (max-width: 900px) { .recipe-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .recipe-grid { grid-template-columns: 1fr; } }
+
 .site-header {
     display: flex;
     justify-content: space-between;
@@ -100,12 +163,12 @@ color:#FFFFFf;
 .site-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #900c0c;
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
 .site-header nav a {
-    color: #900c0c;
+    color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;
 }
@@ -116,7 +179,7 @@ color:#FFFFFf;
 
 .login-card {
     padding: 1.4rem;
-    background-color: #ffffff;
+    background-color: var(--card-color);
     border: 1px solid #e4ddd1;
     border-radius: 10px;
 }
@@ -143,7 +206,31 @@ color:#FFFFFf;
     text-align: center;
     text-decoration: none;
     color: white;
-    background-color: #900c0c;
+    background-color:var(--primary-color);
     border-radius: 15px;
     font-weight: 600;
+}
+.error {
+     color: #b00020;
+}
+.recipe-steps{
+    font-size: 14px;
+    border: 1px solid ;
+    border-radius: 14px;
+    flex-direction:column;
+    overflow: hidden;
+    padding: 20px;
+    background-color:var(--card-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.step-image{
+   width: 100%;
+    max-width: 450px;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 15px 0;
+    border-radius: 8px;
 }

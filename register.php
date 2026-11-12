@@ -7,6 +7,8 @@
         //$email = post_value('email'); and it was because my php didn't recognize post_value
         $email = trim($_POST['email'] ?? '');
         $plain = $_POST['password'] ?? '';
+       
+       //Password hash//
         $hash = password_hash($plain, PASSWORD_DEFAULT);
 
         try{
@@ -33,8 +35,8 @@
     <title>UXID 241 Cookbook - Register</title>
 
     <link rel="icon" type="image/x-icon" href="assets/images/placeholder.png">
-    <link rel="stylesheet" href="assets/styles/normalize.css">
-    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <header class="site-header">

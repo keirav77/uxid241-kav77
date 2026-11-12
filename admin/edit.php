@@ -4,6 +4,11 @@ declare(strict_types=1);
 require_once __DIR__ . '/../database.php';
 require_once __DIR__ . '/../require_login.php';
 
+function post_value(string $key): string {
+    return isset($_POST[$key]) && is_string($_POST[$key])
+        ? trim($_POST[$key])
+        : '';
+}
 
 if (!isset($_SESSION['user_id'])) {
 header('Location: ../login.php');
@@ -28,6 +33,10 @@ $recipe = mysqli_fetch_assoc($result);
 if (!$recipe) {
     exit('Recipe not found.');
 }
+$categories = mysqli_fetch_all(
+    mysqli_query($conn, 'SELECT category_id, category_name FROM categories ORDER BY category_name'),
+    MYSQLI_ASSOC);
+
 $editTitle = (string)$recipe['title'];
 $editSubtitle = (string)$recipe['subtitle'];
 $editDescription = (string)$recipe['description'];
@@ -35,7 +44,7 @@ $editCategory = (string)$recipe['category_id'];
 $editServings = (string)$recipe['servings'];
 $editPrepTime = (string)$recipe['prep_time'];
 $editImage = (string)$recipe['image'];
-
+$error = '';
 
 /*Didn't use ai but just copied conventions from index and changed them to edit instead of added */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -46,10 +55,6 @@ $editCategory = post_value('edit-category');
 $editServings = post_value('edit-servings');
 $editPrepTime = post_value('edit-prep-time');
 $editImage = post_value('edit-image');
-}
-
-
-
 switch ($_POST['form'] ?? '') {
 case "C":
     /*The edit form has a hidden field named form with the value C. The switch reads that value (or an empty string if it’s missing) and runs the matching case. Here, C means “update this recipe.” This is the same idea as your A for add and B for delete on the index page. */
@@ -79,7 +84,13 @@ error_log($e->getMessage());
 }
 }break;
 }
+}
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,10 +127,12 @@ error_log($e->getMessage());
 <label for="edit-category">Category</label>
 <select id="edit-category" name="edit-category">
 <option value="">Choose...</option>
+
 <?php foreach ($categories as $cat): ?>
-<option value="<?= e((string)$cat['category_id']) ?>"
-<?= $editCategory === (string)$cat['category_id'] ? 'selected' : '' ?>>
-<?= e($cat['category_name']) ?>
+    <option value="<?= e((string)$cat['category_id']) ?>">
+   <?= $editCategory === (string)$cat['category_id'] ? 'selected' : '' ?>
+    <?= e($cat['category_name']) ?>
+    
 </option>
 <?php endforeach; ?>
 </select>

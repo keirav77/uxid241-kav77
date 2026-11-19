@@ -184,7 +184,9 @@ $recipes = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
         <a href="../index.php">Home</a>
         <a href="logout.php">Log Out</a>
     </nav>
-
+<button class= "img-upload">
+    <a href="upload.php">Upload Image</a>
+        </button>
 </header>
 
 <main>
